@@ -36,4 +36,11 @@ public class ProductMapper {
                 .map(this::toResponseDto)
                 .collect(Collectors.toList());
     }
+
+    public void updateEntityFromDto(ProductRequestDto dto, Product product) {
+    product.setName(dto.getName());
+    product.setDescription(dto.getDescription());
+    product.setPrice(dto.getPrice());
+    product.setSkuCode(dto.getSkuCode());
+}
 }

@@ -9,6 +9,8 @@ import com.lavindu_product.product_service.Entity.Product;
 import com.lavindu_product.product_service.repository.ProductRepository;
 import com.lavindu_product.product_service.service.ProductService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 
@@ -44,6 +49,12 @@ public class ProductController {
     @GetMapping("getProducts")
     public ResponseEntity<List<ProductResponseDto>> getProducts() {
         return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
+    }
+
+    @PutMapping("updateProduct/{id}")
+    public ResponseEntity<ProductResponseDto> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductRequestDto productRequestDto) {
+        ProductResponseDto updatedProd= productService.updateProduct(id, productRequestDto);
+        return new ResponseEntity<>(updatedProd, HttpStatus.OK);
     }
     
 }
