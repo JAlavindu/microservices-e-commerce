@@ -6,25 +6,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.lavindu_product.product_service.DTO.ProductRequestDto;
+import com.lavindu_product.product_service.DTO.ProductResponseDto;
 import com.lavindu_product.product_service.Entity.Product;
+import com.lavindu_product.product_service.mapper.ProductMapper;
 import com.lavindu_product.product_service.repository.ProductRepository;
 
 @Service
 public class ProductService {
 
     private final ProductRepository prodRepo;
+    private final ProductMapper prodMapper;
 
-    public ProductService(ProductRepository prodRepo){
+    public ProductService(ProductRepository prodRepo, ProductMapper prodMapper){
         this.prodRepo = prodRepo;
+        this.prodMapper = prodMapper;
     }
 
-    public ResponseEntity<List<Product>> getProducts() {
-        List<Product> products = prodRepo.findAll();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public List<ProductResponseDto> getProducts() {
+        return prodMapper.toResponseDtoList(prodRepo.findAll());
     }
 
-    public Product saveProduct(Product product) {
-        return prodRepo.save(product);
+    public ProductResponseDto saveProduct(ProductRequestDto productRequestDto) {
+        Product product = prodMapper.toEntity(productRequestDto);
+        Product savedProd = prodRepo.save(product);
+        return prodMapper.toResponseDto(savedProd);
     }
     
 }
