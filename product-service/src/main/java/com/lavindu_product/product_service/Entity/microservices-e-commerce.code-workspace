@@ -12,6 +12,9 @@
     {
       "path": "../../../../../../../../api-gateway",
     },
+    {
+      "path": "../../../../../../../../inventory-service",
+    },
   ],
   "settings": {
     "java.configuration.updateBuildConfiguration": "automatic",
