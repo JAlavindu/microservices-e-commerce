@@ -3,6 +3,8 @@ package com.lavindu_product.product_service.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lavindu_product.product_service.DTO.ProductRequestDto;
+import com.lavindu_product.product_service.DTO.ProductResponseDto;
 import com.lavindu_product.product_service.Entity.Product;
 import com.lavindu_product.product_service.repository.ProductRepository;
 import com.lavindu_product.product_service.service.ProductService;
@@ -34,14 +36,14 @@ public class ProductController {
     }
     
     @PostMapping("createProduct")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product savedProd = productService.saveProduct(product);
+    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductRequestDto product) {
+        ProductResponseDto savedProd = productService.saveProduct(product);
         return new ResponseEntity<>(savedProd, HttpStatus.OK);
     }
     
     @GetMapping("getProducts")
-    public ResponseEntity<List<Product>> getProducts() {
-        return productService.getProducts();
+    public ResponseEntity<List<ProductResponseDto>> getProducts() {
+        return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
     }
     
 }
