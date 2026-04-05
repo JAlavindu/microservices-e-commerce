@@ -22,5 +22,9 @@ public class ProductService {
         List<Product> products = prodRepo.findAll();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    public Product saveProduct(Product product) {
+        return prodRepo.save(product);
+    }
     
 }
