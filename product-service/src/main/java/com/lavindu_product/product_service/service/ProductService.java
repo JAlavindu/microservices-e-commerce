@@ -14,6 +14,8 @@ import com.lavindu_product.product_service.Entity.Product;
 import com.lavindu_product.product_service.mapper.ProductMapper;
 import com.lavindu_product.product_service.repository.ProductRepository;
 
+import jakarta.validation.Valid;
+
 @Service
 public class ProductService {
 
@@ -43,6 +45,15 @@ public class ProductService {
         Product updated = prodRepo.save(existingProd);
         return prodMapper.toResponseDto(updated);
         
+    }
+
+    public ProductResponseDto deleteProduct(Long id) {
+        Product existingProd = prodRepo.findById(id).orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Product not found for id: " + id));
+        
+        ProductResponseDto deletedProduct = prodMapper.toResponseDto(existingProd);
+        prodRepo.delete(existingProd);
+        return deletedProduct;
     }
     
 }

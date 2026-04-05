@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +56,12 @@ public class ProductController {
     public ResponseEntity<ProductResponseDto> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductRequestDto productRequestDto) {
         ProductResponseDto updatedProd= productService.updateProduct(id, productRequestDto);
         return new ResponseEntity<>(updatedProd, HttpStatus.OK);
+    }
+
+    @DeleteMapping("deleteProduct/{id}")
+    public ResponseEntity<ProductResponseDto> deleteProduct(@PathVariable Long id){
+        ProductResponseDto deletedProd= productService.deleteProduct(id);
+        return new ResponseEntity<>(deletedProd, HttpStatus.OK);
     }
     
 }
