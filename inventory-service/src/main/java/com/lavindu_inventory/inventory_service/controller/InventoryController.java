@@ -23,6 +23,6 @@ public class InventoryController {
 
     @GetMapping()
     public ResponseEntity<List<InventoryResponseDTO>> isInstock(@RequestParam List<String> skuCode) {
-        return new ResponseEntity<>(inventoryService.isInstock(skuCode), HttpStatus.OK);
+        return new ResponseEntity<>(inventoryService.isInStock(skuCode), HttpStatus.OK);
     }
 }
