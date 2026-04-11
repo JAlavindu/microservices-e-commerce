@@ -1,13 +1,22 @@
 {
-  "folders": [
-	{
-		"path": "../../../../../../../.."
-	},
-	{
-		"path": "../../../../../../.."
+	"folders": [
+		{
+			"path": "../../../../../../../.."
+		},
+		{
+			"path": "../../../../../../../../api-gateway"
+		},
+		{
+			"path": "../../../../../../../../discovery-server"
+		},
+		{
+			"path": "../../../../../../.."
+		},
+		{
+			"path": "../../../../../../../../product-service"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
 	}
-],
-  "settings": {
-    "powershell.cwd": "inventory-service"
-  }
 }
