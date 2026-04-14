@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../.."
+		},
+		{
+			"path": "../../../../../../../../api-gateway"
+		},
+		{
+			"path": "../../../../../../../../discovery-server"
+		},
+		{
+			"path": "../../../../../../../../inventory-service"
+		},
+		{
+			"path": "../../../../../../../../product-service"
+		},
+		{
+			"path": "../../../../../../.."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
