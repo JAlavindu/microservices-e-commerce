@@ -9,14 +9,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
-public class OrderRequestDTO {
+@Builder
+public class OrderResponseDTO {
     private Long id;
     
     private String orderNumber;
 
     private List<OrderLineItems> orderLineItemsList;
+
 }
